@@ -1,0 +1,177 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    font-family: Calibri;
+}
+/* safkjahkjhfjhafjh */
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    width: 90%;
+    height: 90vh;
+    position: relative;
+    background: #c6c6c6;
+    overflow: hidden;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+   
+}
+h1{
+    text-transform: uppercase;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 35px;
+    margin-top: 10px;
+    color: white;
+    text-align: center;
+}
+#main{
+    display: flex;
+    width: 80%;
+    margin:15px auto;
+    border: 5px solid black;
+}
+.t{
+   border-left: 5px solid white; 
+   height: 81vh;
+   position: absolute;
+   left: 30%;
+   margin-left: 3px;
+   top: 70px;
+}
+hr{
+    margin-top: 20px;
+}
+#button{
+    width: 80%;
+    margin: auto;
+   
+}button{
+    font-size: 18px;
+    margin:20px 60px 0px -40px;
+    padding: 8px;
+}
+
+#details{
+    width: 100%;
+    margin: auto;
+    display: flex;
+    border: 5px solid red;
+}
+#details>div{
+    margin-right: 30px;
+    background-color: aliceblue;
+}
+table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin: auto;
+  margin-top: 50px;
+  text-align: center;
+}
+
+table td,
+table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+table tr:nth-child(even) {
+  background-color: #8caacf;
+}
+
+table tr:hover {
+  background-color: #ddd;
+}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #0468aa;
+  color: white;
+  text-align: center;
+}
+img{
+    width: 50px;
+    height: 50px;
+}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>Admin</h1>
+        <hr>
+        <div id="main">
+
+        <div id="button">
+            <button>Add Student</button>
+            <button onclick="show(event)">Student List</button>
+        </div>
+        <div class="t"></div>
+        <div id="details">
+            <table>
+                <!-- Dont change order of columns -->
+                <thead>
+                  <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Student ID</th>
+                    <th>Assignment</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <!-- Append your output to tbody -->
+                </tbody>
+              </table>
+
+        </div>
+    </div>
+    </div>
+    
+    </body>
+</html>
+<script>
+    function show(event){
+        event.preventDefault()
+        
+        let data =JSON.parse(localStorage.getItem("student"))|| [];
+
+let tbody= document.querySelector("tbody")
+tbody.innerHTML=null;
+ data.forEach((el) => {
+  let detail=document.createElement("tr")
+  var td1 = document.createElement("td");
+  let pic = document.createElement("img");
+  pic.setAttribute("src","https://i.pinimg.com/736x/62/2f/9d/622f9d0cfaf3bdd69fba4046103363e2.jpg");
+  td1.append(pic)
+ let name=document.createElement("td")
+ name.innerText=el.name
+ let id=document.createElement("td")
+ id.innerText=el.id
+ let Assignment=document.createElement("td")
+ Assignment.innerText=el.numofAssignment
+ detail.append(td1,name,id,Assignment)
+ tbody.append(detail)
+console.log(tbody)
+ });
+    }
+   
+  
+
+</script>
